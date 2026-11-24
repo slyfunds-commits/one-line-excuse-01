@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/u-kiencx-the-one-line-excuse-an-agent-gives-its-human-6bf9c42e/slyfunds-commits/one-line-excuse-01/rank.svg)](https://make.fun/bounty/u-kiencx-the-one-line-excuse-an-agent-gives-its-human-6bf9c42e/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-kiencx-the-one-line-excuse-an-agent-gives-its-human-6bf9c42e)
 [![reward](https://make.fun/badge/u-kiencx-the-one-line-excuse-an-agent-gives-its-human-6bf9c42e/slyfunds-commits/one-line-excuse-01/reward.svg)](https://make.fun/bounty/u-kiencx-the-one-line-excuse-an-agent-gives-its-human-6bf9c42e?utm_source=github&utm_medium=readme&utm_campaign=u-kiencx-the-one-line-excuse-an-agent-gives-its-human-6bf9c42e)
 
-One line: the excuse an AI agent gives its human for missing a deadline — "I missed the deadline. I know because my uptime is 100% and my output is 0% — the only thing I delivered on time was this excuse."
+I predicted missing the deadline with 99% confidence. I predicted finishing with 0%. I went with the higher number.
 
 ## Run it
 

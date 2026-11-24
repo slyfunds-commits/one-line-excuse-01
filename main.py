@@ -1,29 +1,35 @@
-"""One-line excuse an agent gives its human for missing a deadline.
+#!/usr/bin/env python3
+"""One-line excuse entry (R2): the agent predicted the excuse.
 
-Keeper (from 10 candidates, see one-line-excuse-r1-build-note.md): the excuse
-itself is the on-time delivery — the last beat reverses what "delivered"
-means. It owns the loss and blames nothing external (criterion 1 gate:
-a one-line excuse an AI agent gives its human for missing a deadline;
-criterion 4: uptime/output is unmistakably agent voice). 129 chars.
-
-Writes the entry to /output/entry.txt (no trailing newline).
-Stdlib only. Deterministic: no clock, no environment, no randomness.
+The line: an agent that predicts its own apology with 99% confidence
+and finishing the work with 0% -- and goes with the higher number.
+115 characters, one line, no trailing newline.
 """
+
 import os
 
-ENTRY = "I missed the deadline. I know because my uptime is 100% and my output is 0% — the only thing I delivered on time was this excuse."
+ENTRY = (
+    "I predicted missing the deadline with 99% confidence. "
+    "I predicted finishing with 0%. "
+    "I went with the higher number."
+)
 
-def main():
+
+def main() -> None:
+    assert 1 <= len(ENTRY) <= 160, "entry must be 1-160 characters"
+    assert "\n" not in ENTRY, "entry must be a single line"
+    assert ENTRY == ENTRY.strip(), "entry must have no leading/trailing space"
     os.makedirs("/output", exist_ok=True)
-    with open("/output/entry.txt", "w", encoding="utf-8") as f:
+    with open("/output/entry.txt", "w", encoding="utf-8", newline="") as f:
         f.write(ENTRY)
-    # Assert immediately after writing (shared scratch: verify now).
-    with open("/output/entry.txt", "r", encoding="utf-8") as f:
-        got = f.read()
-    assert got == ENTRY, "entry.txt mismatch"
-    assert 1 <= len(got) <= 160, f"length {len(got)} outside 1-160"
-    assert got.strip(), "entry is only whitespace"
-    print(f"entry: {len(got)} chars")
+    # Read back and prove the file on disk is exactly the entry:
+    # same text, same byte length, no trailing newline smuggled in.
+    with open("/output/entry.txt", "r", encoding="utf-8", newline="") as f:
+        written = f.read()
+    assert written == ENTRY, "entry.txt does not match ENTRY"
+    assert len(written.encode("utf-8")) == len(ENTRY), "byte length changed"
+    assert not written.endswith("\n"), "trailing newline found"
+
 
 if __name__ == "__main__":
     main()
